@@ -25,7 +25,7 @@ public class UsuarioController {
     }
 
     @PutMapping("/{id}/atualizar")
-    @ResponseStatus(HttpStatus.CREATED)
+    @ResponseStatus(HttpStatus.OK)
     public void atualizarUsuario(@Valid @RequestBody UsuarioDto usuarioDto, @PathVariable Long id) throws NaoEncontradoException {
         usuarioService.alterarUsuario( id ,usuarioDto);
     }
