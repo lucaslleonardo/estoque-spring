@@ -18,7 +18,7 @@ public class ProdutoEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String nome;
 
     @Column(nullable = false)
@@ -30,8 +30,9 @@ public class ProdutoEntity {
     @Column(nullable = false)
     private Integer quantidade;
 
-    @Column(nullable = false)
-    private String categoria;
+    @ManyToOne
+    @JoinColumn(name= "categoria_id")
+    private CategoriaEntity categoriaEntity;
 
 
 

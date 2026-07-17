@@ -1,18 +1,24 @@
 package br.com.lucaslleonardo.estoque_spring.service;
 
 
+import br.com.lucaslleonardo.estoque_spring.dto.CategoriaDto;
 import br.com.lucaslleonardo.estoque_spring.dto.ProdutoDto;
+import br.com.lucaslleonardo.estoque_spring.entity.CategoriaEntity;
 import br.com.lucaslleonardo.estoque_spring.entity.ProdutoEntity;
 import br.com.lucaslleonardo.estoque_spring.handler.NaoEncontradoException;
+import br.com.lucaslleonardo.estoque_spring.repository.ICategoriaRepository;
 import br.com.lucaslleonardo.estoque_spring.repository.IProdutoRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import java.util.List;
 
 
 @Service
+@RequiredArgsConstructor
 public class ProdutoService {
 
-    private IProdutoRepository produtoRepository;
+    private final IProdutoRepository produtoRepository;
+    private final ICategoriaRepository categoriaRepository;
 
     public void criarProduto(ProdutoDto produtoDto) throws NaoEncontradoException {
         ProdutoEntity criarProduto = produtoRepository.findByNome(produtoDto.getNome())
@@ -22,12 +28,15 @@ public class ProdutoService {
             throw new RuntimeException("Já existe um produto com esse nome.");
         }
 
+        CategoriaEntity categoria = categoriaRepository.findById(produtoDto.getCategoriaId())
+                .orElseThrow(() -> new RuntimeException("Categoria não encontrada"));
+
         ProdutoEntity registrarProduto = ProdutoEntity.builder()
                 .nome(produtoDto.getNome())
                 .quantidade(produtoDto.getQuantidade())
                 .preco(produtoDto.getPreco())
-                .categoria(produtoDto.getCategoria())
                 .descricao(produtoDto.getDescricao())
+                .categoriaEntity(categoria)
                 .build();
 
         produtoRepository.save(registrarProduto);
@@ -51,7 +60,6 @@ public class ProdutoService {
         produto.setNome(produtoDto.getNome());
         produto.setQuantidade(produtoDto.getQuantidade());
         produto.setPreco(produtoDto.getPreco());
-        produto.setCategoria(produtoDto.getCategoria());
         produto.setDescricao(produtoDto.getDescricao());
 
         return produtoRepository.save(produto);
