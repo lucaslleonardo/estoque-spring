@@ -1,4 +1,4 @@
-package br.com.lucaslleonardo.estoque_spring.config;
+package br.com.lucaslleonardo.estoque_spring.Controller;
 
 
 import br.com.lucaslleonardo.estoque_spring.dto.UsuarioDto;
