@@ -5,14 +5,17 @@ import br.com.lucaslleonardo.estoque_spring.dto.UsuarioDto;
 import br.com.lucaslleonardo.estoque_spring.entity.UsuarioEntity;
 import br.com.lucaslleonardo.estoque_spring.handler.NaoEncontradoException;
 import br.com.lucaslleonardo.estoque_spring.repository.IUsuarioRepository;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
+@AllArgsConstructor
 public class UsuarioService {
-
-    @Autowired
-    private IUsuarioRepository usuarioRepository;
+    
+    private final IUsuarioRepository usuarioRepository;
+    private final PasswordEncoder passwordEncoder;
 
     public void criarUsuario(UsuarioDto usuarioDto) throws NaoEncontradoException {
 
@@ -26,7 +29,7 @@ public class UsuarioService {
         UsuarioEntity criarUsuario = UsuarioEntity.builder()
                 .usuario(usuarioDto.getUsuario())
                 .email(usuarioDto.getEmail())
-                .senha(usuarioDto.getSenha())
+                .senha(passwordEncoder.encode(usuarioDto.getSenha()))
                 .cargos(usuarioDto.getCargos())
                 .build();
 
@@ -39,7 +42,7 @@ public class UsuarioService {
                 .orElseThrow(() -> new RuntimeException("Usuario nao encotrado"));
 
         attUsuario.setEmail(usuarioDto.getEmail());
-        attUsuario.setSenha(usuarioDto.getSenha());
+        attUsuario.setSenha(passwordEncoder.encode(usuarioDto.getSenha()));
         attUsuario.setCargos(usuarioDto.getCargos());
         usuarioRepository.save(attUsuario);
 
