@@ -46,7 +46,7 @@ public class CategoriaController {
     }
 
     @DeleteMapping("/{id}/deletar")
-    public void deletarCategoria(@PathVariable Long id) throws NaoEncontradoException {
+    public void deletarCategoria(@PathVariable Long id) {
         categoriaService.deletarCategoria(id);
     }
 

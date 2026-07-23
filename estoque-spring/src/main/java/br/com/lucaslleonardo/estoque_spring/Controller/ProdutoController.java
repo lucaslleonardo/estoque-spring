@@ -47,7 +47,7 @@ public class ProdutoController {
 
     @DeleteMapping
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deletarProduto(@PathVariable Long id) throws NaoEncontradoException {
+    public void deletarProduto(@PathVariable Long id){
         produtoService.deletarProduto(id);
     }
 
