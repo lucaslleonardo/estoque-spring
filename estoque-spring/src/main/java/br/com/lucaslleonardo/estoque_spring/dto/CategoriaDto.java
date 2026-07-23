@@ -12,7 +12,7 @@ import lombok.*;
 @Builder
 public class CategoriaDto {
 
-    @NotBlank
+    @NotBlank(message = "Campo obrigatório")
     private String nome;
 
 }

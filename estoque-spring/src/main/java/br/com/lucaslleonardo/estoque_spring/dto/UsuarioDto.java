@@ -2,6 +2,7 @@ package br.com.lucaslleonardo.estoque_spring.dto;
 
 
 import br.com.lucaslleonardo.estoque_spring.roles.Cargos;
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
@@ -14,16 +15,17 @@ import lombok.*;
 @Builder
 public class UsuarioDto {
 
-    @NotBlank
+    @NotBlank(message = "Campo obrigatório")
     private String usuario;
 
     @NotBlank
+    @Email(message = "Campo obrigatório")
     private String email;
 
-    @NotBlank
+    @NotBlank(message = "Campo obrigatório")
     private String senha;
 
-    @NotNull
+    @NotNull(message = "Campo obrigatório")
     private Cargos cargos;
 
 }

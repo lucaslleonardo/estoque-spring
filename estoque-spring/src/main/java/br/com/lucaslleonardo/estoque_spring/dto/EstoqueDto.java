@@ -11,7 +11,7 @@ import lombok.*;
 @Builder
 public class EstoqueDto {
 
-    @NotNull
+    @NotNull(message = "Campo obrigatório")
     @Min(1)
     private Integer quantidade;
 

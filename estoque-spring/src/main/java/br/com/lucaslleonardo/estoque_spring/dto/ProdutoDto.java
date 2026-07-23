@@ -13,19 +13,19 @@ import lombok.*;
 @Builder
 public class ProdutoDto {
 
-    @NotBlank
+    @NotBlank(message = "Campo obrigatório")
     private String nome;
 
-    @NotBlank
+    @NotBlank(message = "Campo obrigatório")
     private String descricao;
 
-    @NotNull
+    @NotNull(message = "Campo obrigatório")
     private Double preco;
 
-    @NotNull
+    @NotNull(message = "Campo obrigatório")
     private Integer quantidade;
 
-    @NotBlank
+    @NotBlank(message = "Campo obrigatório")
     private String categoria;
 
     private Long categoriaId;
