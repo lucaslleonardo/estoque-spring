@@ -15,7 +15,7 @@ public class EstoqueService {
     public void entradaEstoque(Long id, EstoqueDto estoqueDto) throws NaoEncontradoException {
 
         ProdutoEntity produto = produtoRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Produto não encontrado"));
+                .orElseThrow(() -> new NaoEncontradoException("Produto não encontrado"));
 
         produto.setQuantidade(produto.getQuantidade() + estoqueDto.getQuantidade());
 
@@ -25,7 +25,7 @@ public class EstoqueService {
     public void saidaEstoque(Long id, EstoqueDto estoqueDto) throws NaoEncontradoException {
 
         ProdutoEntity produto = produtoRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Produto não encontrado"));
+                .orElseThrow(() -> new NaoEncontradoException("Produto não encontrado"));
 
         if(produto.getQuantidade() < estoqueDto.getQuantidade()){
             throw (new NaoEncontradoException("Produto com estoque insuficiente"));

@@ -1,4 +1,4 @@
-package br.com.lucaslleonardo.estoque_spring.handler;
+package br.com.lucaslleonardo.estoque_spring.exception;
 
 
 public class NaoEncontradoException extends Exception {

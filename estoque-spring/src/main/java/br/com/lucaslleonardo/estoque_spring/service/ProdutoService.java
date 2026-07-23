@@ -4,6 +4,7 @@ package br.com.lucaslleonardo.estoque_spring.service;
 import br.com.lucaslleonardo.estoque_spring.dto.ProdutoDto;
 import br.com.lucaslleonardo.estoque_spring.entity.CategoriaEntity;
 import br.com.lucaslleonardo.estoque_spring.entity.ProdutoEntity;
+import br.com.lucaslleonardo.estoque_spring.exception.JaExisteException;
 import br.com.lucaslleonardo.estoque_spring.exception.NaoEncontradoException;
 import br.com.lucaslleonardo.estoque_spring.repository.ICategoriaRepository;
 import br.com.lucaslleonardo.estoque_spring.repository.IProdutoRepository;
@@ -19,16 +20,16 @@ public class ProdutoService {
     private final IProdutoRepository produtoRepository;
     private final ICategoriaRepository categoriaRepository;
 
-    public void criarProduto(ProdutoDto produtoDto) throws NaoEncontradoException {
+    public void criarProduto(ProdutoDto produtoDto) throws JaExisteException, NaoEncontradoException {
         ProdutoEntity criarProduto = produtoRepository.findByNome(produtoDto.getNome())
                 .orElse(null);
 
         if (criarProduto != null) {
-            throw new RuntimeException("Já existe um produto com esse nome.");
+            throw new JaExisteException("Já existe um produto com esse nome.");
         }
 
         CategoriaEntity categoria = categoriaRepository.findById(produtoDto.getCategoriaId())
-                .orElseThrow(() -> new RuntimeException("Categoria não encontrada"));
+                .orElseThrow(() -> new NaoEncontradoException("Categoria não encontrada"));
 
         ProdutoEntity registrarProduto = ProdutoEntity.builder()
                 .nome(produtoDto.getNome())
@@ -47,7 +48,7 @@ public class ProdutoService {
 
     public ProdutoEntity getProduto(Long id) throws NaoEncontradoException {
         return produtoRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Produto nao encontrado"));
+                .orElseThrow(() -> new NaoEncontradoException("Produto nao encontrado"));
     }
 
     public ProdutoEntity atualizarProduto(Long id, ProdutoDto produtoDto)
@@ -64,7 +65,7 @@ public class ProdutoService {
         return produtoRepository.save(produto);
     }
 
-    public void deletarProduto(Long id) throws NaoEncontradoException {
+    public void deletarProduto(Long id) {
         produtoRepository.deleteById(id);
     }
 

@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.authentication.CredentialsExpiredException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -22,7 +23,7 @@ public class AuthService {
     @Value("${jwt.expiration}")
     private Long expiration;
 
-    public TokenResponse login(LoginRequest loginRequest) throws Exception {
+    public TokenResponse login(LoginRequest loginRequest) throws CredentialsExpiredException, BadCredentialsException {
 
         try {
 
@@ -42,7 +43,7 @@ public class AuthService {
             return new TokenResponse(token, expiration);
 
         } catch (BadCredentialsException e) {
-            throw new Exception("Credenciais inválidas");
+            throw new CredentialsExpiredException("Credenciais inválidas");
         }
 
     }

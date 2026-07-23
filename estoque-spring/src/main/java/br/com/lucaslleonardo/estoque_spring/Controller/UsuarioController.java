@@ -32,7 +32,7 @@ public class UsuarioController {
 
     @DeleteMapping("/{id}/deletar")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void excluirUsuario(@PathVariable Long id) throws NaoEncontradoException {
+    public void excluirUsuario(@PathVariable Long id) {
         usuarioService.deletarUsuario(id);
     }
 
