@@ -3,7 +3,7 @@ package br.com.lucaslleonardo.estoque_spring.Controller;
 
 import br.com.lucaslleonardo.estoque_spring.dto.CategoriaDto;
 import br.com.lucaslleonardo.estoque_spring.entity.CategoriaEntity;
-import br.com.lucaslleonardo.estoque_spring.handler.NaoEncontradoException;
+import br.com.lucaslleonardo.estoque_spring.exception.NaoEncontradoException;
 import br.com.lucaslleonardo.estoque_spring.service.CategoriaService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;

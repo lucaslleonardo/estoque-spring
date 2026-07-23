@@ -2,7 +2,7 @@ package br.com.lucaslleonardo.estoque_spring.Controller;
 
 
 import br.com.lucaslleonardo.estoque_spring.dto.UsuarioDto;
-import br.com.lucaslleonardo.estoque_spring.handler.NaoEncontradoException;
+import br.com.lucaslleonardo.estoque_spring.exception.NaoEncontradoException;
 import br.com.lucaslleonardo.estoque_spring.service.UsuarioService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;

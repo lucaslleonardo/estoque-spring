@@ -2,7 +2,7 @@ package br.com.lucaslleonardo.estoque_spring.Controller;
 
 
 import br.com.lucaslleonardo.estoque_spring.dto.EstoqueDto;
-import br.com.lucaslleonardo.estoque_spring.handler.NaoEncontradoException;
+import br.com.lucaslleonardo.estoque_spring.exception.NaoEncontradoException;
 import br.com.lucaslleonardo.estoque_spring.service.EstoqueService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;

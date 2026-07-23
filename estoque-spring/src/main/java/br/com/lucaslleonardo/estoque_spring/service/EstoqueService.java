@@ -3,7 +3,7 @@ package br.com.lucaslleonardo.estoque_spring.service;
 
 import br.com.lucaslleonardo.estoque_spring.dto.EstoqueDto;
 import br.com.lucaslleonardo.estoque_spring.entity.ProdutoEntity;
-import br.com.lucaslleonardo.estoque_spring.handler.NaoEncontradoException;
+import br.com.lucaslleonardo.estoque_spring.exception.NaoEncontradoException;
 import br.com.lucaslleonardo.estoque_spring.repository.IProdutoRepository;
 import org.springframework.stereotype.Service;
 

@@ -3,10 +3,9 @@ package br.com.lucaslleonardo.estoque_spring.service;
 
 import br.com.lucaslleonardo.estoque_spring.dto.UsuarioDto;
 import br.com.lucaslleonardo.estoque_spring.entity.UsuarioEntity;
-import br.com.lucaslleonardo.estoque_spring.handler.NaoEncontradoException;
+import br.com.lucaslleonardo.estoque_spring.exception.NaoEncontradoException;
 import br.com.lucaslleonardo.estoque_spring.repository.IUsuarioRepository;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
