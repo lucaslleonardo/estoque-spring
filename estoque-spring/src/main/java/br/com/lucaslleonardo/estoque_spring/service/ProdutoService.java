@@ -42,10 +42,6 @@ public class ProdutoService {
         produtoRepository.save(registrarProduto);
     }
 
-    public List<ProdutoEntity> listarProdutos() {
-        return produtoRepository.findAll();
-    }
-
     public ProdutoEntity getProduto(Long id) throws NaoEncontradoException {
         return produtoRepository.findById(id)
                 .orElseThrow(() -> new NaoEncontradoException("Produto nao encontrado"));
@@ -63,6 +59,11 @@ public class ProdutoService {
         produto.setDescricao(produtoDto.getDescricao());
 
         return produtoRepository.save(produto);
+    }
+
+
+    public List<ProdutoEntity> listarProdutos() {
+        return produtoRepository.findAll();
     }
 
     public void deletarProduto(Long id) {

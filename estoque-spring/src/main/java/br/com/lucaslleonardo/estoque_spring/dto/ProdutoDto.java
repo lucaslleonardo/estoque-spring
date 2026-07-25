@@ -25,9 +25,6 @@ public class ProdutoDto {
     @NotNull(message = "Campo obrigatório")
     private Integer quantidade;
 
-    @NotBlank(message = "Campo obrigatório")
-    private String categoria;
-
     private Long categoriaId;
 
 }
