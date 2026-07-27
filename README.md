@@ -29,7 +29,7 @@ API REST desenvolvida com Java e Spring Boot para gerenciamento de produtos, cat
 
 ---
 
-## 🛠️ Tecnologias utilizadas
+##  Tecnologias utilizadas
 
 - Java 21
 - Spring Boot
