@@ -1,7 +1,7 @@
 # Sistema de Gerenciamento de Estoque
 
 API REST desenvolvida com Java e Spring Boot para gerenciamento de produtos, categorias, usuários e movimentação de estoque. O projeto foi criado com o objetivo de praticar conceitos de desenvolvimento backend, arquitetura em camadas, autenticação com Spring Security e testes unitários utilizando JUnit 5 e Mockito. Durante o desenvolvimento, ferramentas de Inteligência Artificial Generativa foram utilizadas como apoio para esclarecimento de conceitos, revisão de código, discussão de boas práticas e auxílio na resolução de dúvidas.
----
+
 
 ##  Funcionalidades
 
