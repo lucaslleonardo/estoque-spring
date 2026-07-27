@@ -101,7 +101,7 @@ class ProdutoServiceTest {
     when(produtoRepository.findByNome(produtoDto.getNome())).thenReturn(Optional.empty());
     when(categoriaRepository.findById((produtoDto.getCategoriaId()))).thenReturn(Optional.of(categoria1));
 
-    assertThrows(JaExisteException.class, () -> produtoService.criarProduto(produtoDto));
+    assertThrows(JaExisteException.class,    () -> produtoService.criarProduto(produtoDto));
 
     verify(produtoRepository).save(any(ProdutoEntity.class));
 

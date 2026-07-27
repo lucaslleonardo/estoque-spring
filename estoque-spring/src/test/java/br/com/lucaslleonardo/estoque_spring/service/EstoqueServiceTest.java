@@ -45,6 +45,7 @@ class EstoqueServiceTest {
                 .build();
     }
 
+
     @Test
     @DisplayName("Teste para verficar entrada no estoque")
     void deveEntrarNoEstoque() throws NaoEncontradoException {
@@ -58,6 +59,7 @@ class EstoqueServiceTest {
         verify(produtoRepository).save(produto);
 
     }
+
 
     @Test
     @DisplayName("Teste erro produto nao encontrado")
@@ -81,6 +83,7 @@ class EstoqueServiceTest {
 
     }
 
+
     @Test
     @DisplayName("Teste erro produto nao encontrado/saida")
     void deveMostrarSaidaException() throws NaoEncontradoException {
@@ -88,7 +91,6 @@ class EstoqueServiceTest {
         assertThrows(NaoEncontradoException.class, () -> estoqueService.saidaEstoque(produto.getId(), estoqueDto));
         verify(produtoRepository, never()).save(any(ProdutoEntity.class));
     }
-
 
 
 }
